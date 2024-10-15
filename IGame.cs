@@ -2,6 +2,6 @@
 {
     public interface IGame
     {
-        
+        public bool StartAGame();
     }
 }
