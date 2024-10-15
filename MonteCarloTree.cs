@@ -57,6 +57,8 @@ namespace MonteCarloTreeSearch
 
                         newNode.T = winTime;
                     }
+
+                    break;
                 }
             }
 
