@@ -2,7 +2,7 @@
 
 namespace MonteCarloTreeSearch
 {
-    public class MonteCarloTreeNode<TData> : IComparer<MonteCarloTreeNode<TData>>
+    public class MonteCarloTreeNode<TData> : IComparable<MonteCarloTreeNode<TData>>
     {
         private float _t;
         private float _n;
@@ -84,12 +84,11 @@ namespace MonteCarloTreeSearch
             }
         }
 
-        public int Compare(MonteCarloTreeNode<TData>? x, MonteCarloTreeNode<TData>? y)
+        public int CompareTo(MonteCarloTreeNode<TData>? other)
         {
-            if (ReferenceEquals(x, y)) return 0;
-            if (y is null) return 1;
-            if (x is null) return -1;
-            return x.S.CompareTo(y.S);
+            if (ReferenceEquals(this, other)) return 0;
+            if (other is null) return 1;
+            return S.CompareTo(other.S);
         }
     }
 }
