@@ -9,12 +9,31 @@ namespace MonteCarloTreeSearch
         private float _c;
         private bool _hasChanged = true;
         private float _s;
+        private TData _data;
+        private readonly MonteCarloTreeNode<TData>? _parent;
 
-        public MonteCarloTreeNode(float t, float n, float c)
+        public MonteCarloTreeNode(float t, float n, float c, int layer, TData data, MonteCarloTreeNode<TData>? parent)
         {
             _t = t;
             _n = n;
             _c = c;
+            _data = data;
+            _parent = parent;
+            Layer = layer;
+            Nodes = new SortedSet<MonteCarloTreeNode<TData>>();
+        }
+
+        public readonly SortedSet<MonteCarloTreeNode<TData>> Nodes;
+        public readonly int Layer;
+
+        public TData Data
+        {
+            get => _data;
+            set
+            {
+                _data = value;
+                _hasChanged = true;
+            }
         }
 
         public float T
@@ -22,7 +41,9 @@ namespace MonteCarloTreeSearch
             get => _t;
             set
             {
-                _t = value;
+                var delta = value - _t;
+                if (_parent != null) _parent.T += delta;
+                _t += delta;
                 _hasChanged = true;
             }
         }
@@ -32,7 +53,9 @@ namespace MonteCarloTreeSearch
             get => _n;
             set
             {
-                _n = value;
+                var delta = value - _n;
+                if (_parent != null) _parent.N += delta;
+                _n += delta;
                 _hasChanged = true;
             }
         }
