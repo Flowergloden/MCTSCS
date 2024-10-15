@@ -1,7 +1,9 @@
 ﻿namespace MonteCarloTreeSearch
 {
-    public interface IGame
+    public interface IGame<T>
     {
-        public bool StartAGame();
+        public bool StartAGame(T data);
+
+        public T[] GetPossibleMoves();
     }
 }
