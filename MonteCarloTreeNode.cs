@@ -89,7 +89,7 @@ namespace MonteCarloTreeSearch
             if (ReferenceEquals(x, y)) return 0;
             if (y is null) return 1;
             if (x is null) return -1;
-            return x._s.CompareTo(y._s);
+            return x.S.CompareTo(y.S);
         }
     }
 }
