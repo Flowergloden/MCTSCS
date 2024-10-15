@@ -1,6 +1,8 @@
-﻿namespace MonteCarloTreeSearch
+﻿using System.Collections.Generic;
+
+namespace MonteCarloTreeSearch
 {
-    public class MonteCarloTreeNode
+    public class MonteCarloTreeNode<TData> : IComparer<MonteCarloTreeNode<TData>>
     {
         private float _t;
         private float _n;
@@ -57,6 +59,14 @@
 
                 return _s;
             }
+        }
+
+        public int Compare(MonteCarloTreeNode<TData>? x, MonteCarloTreeNode<TData>? y)
+        {
+            if (ReferenceEquals(x, y)) return 0;
+            if (y is null) return 1;
+            if (x is null) return -1;
+            return x._s.CompareTo(y._s);
         }
     }
 }
