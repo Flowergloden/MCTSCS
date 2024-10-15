@@ -3,7 +3,8 @@
     public interface IGame<T>
     {
         public bool StartAGame(T data);
+        public T Data { get; }
 
-        public T[] GetPossibleMoves();
+        public T[] GetPossibleMoves(T data);
     }
 }
