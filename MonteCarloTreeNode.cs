@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MonteCarloTreeSearch
 {
@@ -76,7 +77,7 @@ namespace MonteCarloTreeSearch
             {
                 if (_hasChanged)
                 {
-                    _s = Math.UCT(_t, _n, _c);
+                    _s = Math.UCT(_t, _n, _parent?.N ?? float.MaxValue, _c);
                     _hasChanged = false;
                 }
 
