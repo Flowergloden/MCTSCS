@@ -6,5 +6,7 @@
         public T Data { get; }
 
         public T[] GetPossibleMoves(T data);
+
+        public bool IsEnd(T data);
     }
 }

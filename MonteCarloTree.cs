@@ -26,11 +26,18 @@ namespace MonteCarloTreeSearch
 
         public TData Run()
         {
-            for (int time = 0; time < _maxIteration; time++)
+            for (int time = 0; time < _maxIteration && _availableNodes.Any(); time++)
             {
                 var node = _availableNodes.Max();
 
                 if (node.Layer >= _maxDepth)
+                {
+                    _availableNodes.Remove(node);
+                    --time;
+                    continue;
+                }
+
+                if (_game.IsEnd(node.Data))
                 {
                     _availableNodes.Remove(node);
                     --time;
