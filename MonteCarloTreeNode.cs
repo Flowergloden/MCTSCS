@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace MonteCarloTreeSearch
 {
+# nullable enable
     public class MonteCarloTreeNode<TData> : IComparable<MonteCarloTreeNode<TData>>
     {
         private float _t;
