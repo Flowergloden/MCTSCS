@@ -57,16 +57,13 @@ namespace MonteCarloTreeSearch
 
                     ++newNode.N;
 
-                    var winTime = 0;
+                    var score = 0;
                     for (int j = 0; j < _gamePerMove; j++)
                     {
-                        if (_game.StartAGame(move))
-                        {
-                            ++winTime;
-                        }
+                        score += _game.StartAGame(move);
                     }
 
-                    newNode.T = winTime;
+                    newNode.T = score;
                 }
 
                 _availableNodes.Remove(node);
