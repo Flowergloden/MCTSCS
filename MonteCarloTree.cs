@@ -60,8 +60,6 @@ namespace MonteCarloTreeSearch
 
                     newNode.T = winTime;
                 }
-
-                break;
             }
 
             return _root.Nodes.Max().Data;
