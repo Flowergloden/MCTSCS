@@ -21,10 +21,10 @@ namespace MonteCarloTreeSearch
             _data = data;
             _parent = parent;
             Layer = layer;
-            Nodes = new SortedSet<MonteCarloTreeNode<TData>>();
+            Nodes = new List<MonteCarloTreeNode<TData>>();
         }
 
-        public readonly SortedSet<MonteCarloTreeNode<TData>> Nodes;
+        public readonly List<MonteCarloTreeNode<TData>> Nodes;
         public readonly int Layer;
 
         public TData Data
