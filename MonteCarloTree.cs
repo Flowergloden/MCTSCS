@@ -29,9 +29,10 @@ namespace MonteCarloTreeSearch
             for (int time = 0; time < _maxIteration; time++)
             {
                 var node = _availableNodes.Max();
+
                 if (node.Layer >= _maxDepth)
                 {
-                    _availableNodes.RemoveAt(_availableNodes.BinarySearch(node));
+                    _availableNodes.Remove(node);
                     --time;
                     continue;
                 }
@@ -60,6 +61,8 @@ namespace MonteCarloTreeSearch
 
                     newNode.T = winTime;
                 }
+
+                _availableNodes.Remove(node);
             }
 
             return _root.Nodes.Max().Data;
