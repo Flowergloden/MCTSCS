@@ -44,7 +44,7 @@ namespace MonteCarloTreeSearch
             set
             {
                 var delta = value - _t;
-                if (_parent != null) _parent.T += delta;
+                if (_parent != null) _parent.T -= delta;
                 _t += delta;
                 _hasChanged = true;
             }
